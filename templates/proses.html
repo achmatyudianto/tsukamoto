@@ -1,0 +1,285 @@
+{% extends 'base.html' %}
+	{% block content %}
+	    <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Tabel Fuzzy <small> (Fuzzifikasi, Rule Base, Defuzzyfikasi)</small></h3>
+              </div>
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+	        <div class="row">
+	            <div class="col-md-12 col-sm-12 col-xs-12">
+	            	<div class="alert alert-success">
+                        <ul class="fa-ul">
+                          <li>
+                            <i class="fa fa-info-circle fa-lg fa-li"></i>
+                            {%for batasan in batas %}
+                            	<!-- {{ batasan.parameter }} -->
+                            	{{ batasan.derajat }}
+                            	{{ batasan.hasil }}, 
+                            {% endfor %}
+                          </li>
+                        </ul>
+                     </div>
+	                <div class="x_panel">
+	                  <div class="x_title">
+	                    <h2>Tabel Hasil<small>Admin</small></h2>
+	                    <ul class="nav navbar-right panel_toolbox">
+	                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+	                      <li><a class="close-link"><i class="fa fa-close"></i></a></li>
+	                    </ul>
+	                    <div class="clearfix"></div>
+	                  </div>
+	                  <div class="x_content">
+
+	                  	<div class="" role="tabpanel" data-example-id="togglable-tabs">
+	                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+	                        <li role="presentation" class="active"><a href="#fuzzifikasi" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Fuzzyfikasi</a>
+	                        </li>
+	                        <li role="presentation" class=""><a href="#rulebase" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Rule Base</a>
+	                        </li>
+	                        <li role="presentation" class=""><a href="#defuzzifikasi" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Defuzzyfikasi</a>
+	                        </li>
+	                        <li role="presentation" class=""><a href="#filedatas" role="tab" id="profile-tab3" data-toggle="tab" aria-expanded="false">Hasil Per-Data</a>
+	                        </li>
+	                      </ul>
+	                      <div id="myTabContent" class="tab-content">
+	                        <div role="tabpanel" class="tab-pane fade active in" id="fuzzifikasi" aria-labelledby="home-tab">
+	                        	<div class="x_panel">
+	                        	<h3>Hasil Fuzzyfikasi</h3>
+		                         <table id="datatable" class="table table-striped table-bordered">
+			                      <thead>
+			                        <tr>
+			                          <th>Bulan</th>
+			                          <th>Tanggal</th>
+			                          <th>Parameter</th>
+			                          <th>Derajat</th>
+			                          <th>Hasil</th>
+			                        </tr>
+			                      </thead>
+			                      <tbody>
+			                      {% for fuzz in fuzzifikasi %}
+			                        <tr>
+			                          <td>{{ fuzz.datas.bulan }}</td>
+			                          <td>{{ fuzz.datas.minggu }}</td>
+			                          <td>{{ fuzz.parameter }}</td>
+			                          <td>{{ fuzz.derajat }}</td>
+			                          <td>{{ fuzz.hasil }}</td>
+			                        </tr>
+			                      {% endfor %}
+			                      </tbody>
+			                     </table>
+			                    </div>
+	                        </div>
+	                        <div role="tabpanel" class="tab-pane fade" id="rulebase" aria-labelledby="profile-tab">
+	                        	<div class="x_panel">
+	                        	<h3>Rule Base</h3>
+	                        	<div class="col-md-4 col-sm-4 col-xs-12">
+	                        	<table class="table table-bordered">
+			                      <thead>
+			                        <tr>
+			                          <th>No</th>
+			                          <th>Permintaan</th>
+			                          <th>Persediaan</th>
+			                          <th>Produksi</th>
+			                        </tr>
+			                      </thead>
+			                      <tbody>
+			                        <tr>
+			                          <th scope="row">1</th>
+			                          <td>Turun</td>
+			                          <td>Sedikit</td>
+			                          <td>Berkurang</td>
+			                        </tr>
+			                        <tr>
+			                          <th scope="row">2</th>
+			                          <td>Turun</td>
+			                          <td>Sedang</td>
+			                          <td>Berkurang</td>
+			                        </tr>
+			                        <tr>
+			                          <th scope="row">3</th>
+			                          <td>Turun</td>
+			                          <td>Banyak</td>
+			                          <td>Berkurang</td>
+			                        </tr>
+			                      </tbody>
+			                    </table>
+			                	</div>
+			                	<div class="col-md-4 col-sm-4 col-xs-12">
+	                        	<table class="table table-bordered">
+			                      <thead>
+			                        <tr>
+			                          <th>No</th>
+			                          <th>Permintaan</th>
+			                          <th>Persediaan</th>
+			                          <th>Produksi</th>
+			                        </tr>
+			                      </thead>
+			                      <tbody>
+			                        <tr>
+			                          <th scope="row">4</th>
+			                          <td>Tetap</td>
+			                          <td>Sedikit</td>
+			                          <td>Bertambah</td>
+			                        </tr>
+			                        <tr>
+			                          <th scope="row">5</th>
+			                          <td>Tetap</td>
+			                          <td>Sedang</td>
+			                          <td>Bertambah</td>
+			                        </tr>
+			                        <tr>
+			                          <th scope="row">6</th>
+			                          <td>Tetap</td>
+			                          <td>Banyak</td>
+			                          <td>Bertambah</td>
+			                        </tr>
+			                      </tbody>
+			                    </table>
+			                	</div>
+			                	<div class="col-md-4 col-sm-4 col-xs-12">
+	                        	<table class="table table-bordered">
+			                      <thead>
+			                        <tr>
+			                          <th>No</th>
+			                          <th>Permintaan</th>
+			                          <th>Persediaan</th>
+			                          <th>Produksi</th>
+			                        </tr>
+			                      </thead>
+			                      <tbody>
+			                        <tr>
+			                          <th scope="row">7</th>
+			                          <td>Naik</td>
+			                          <td>Sedikit</td>
+			                          <td>Bertambah</td>
+			                        </tr>
+			                        <tr>
+			                          <th scope="row">8</th>
+			                          <td>Naik</td>
+			                          <td>Sedang</td>
+			                          <td>Bertambah</td>
+			                        </tr>
+			                        <tr>
+			                          <th scope="row">9</th>
+			                          <td>Naik</td>
+			                          <td>Banyak</td>
+			                          <td>Bertambah</td>
+			                        </tr>
+			                      </tbody>
+			                    </table>
+			                	</div>
+			                	</div>
+	                          <div class="x_panel">
+	                        	<h3>Hasil Rule Base</h3>
+		                         <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+			                      <thead>
+			                        <tr>
+			                          <th>Bulan</th>
+			                          <th>Tanggal</th>
+			                          <th>Permintaan</th>
+			                          <th>Persediaan</th>
+			                          <th>a-predikat</th>
+			                          <th>z</th>
+			                          <th>a-predikat * z</th>
+			                        </tr>
+			                      </thead>
+			                      <tbody>
+			                      {% for rule in rulebase %}
+			                        <tr>
+			                          <td>{{ rule.datas.bulan }}</td>
+			                          <td>{{ rule.datas.minggu }}</td>
+			                          <td>{{ rule.permintaan }}</td>
+			                          <td>{{ rule.persediaan }}</td>
+			                          <td>{{ rule.a_predikat }}</td>
+			                          <td>{{ rule.z }}</td>
+			                          <td>{{ rule.az_predikat }}</td>
+			                        </tr>
+			                      {% endfor %}
+			                      </tbody>
+			                     </table>
+			                   </div>
+	                        </div>
+	                        <div role="tabpanel" class="tab-pane fade" id="defuzzifikasi" aria-labelledby="profile-tab">
+	                          <div class="x_panel">
+	                        	<h3>Hasil Defuzzyfikasi</h3>
+	                        	<div class="ln_solid"></div>
+	                        	<div class="col-md-6 col-sm-6 col-xs-12">
+		                         <table class="table table-bordered">
+			                      <thead>
+			                        <tr>
+			                          <th>Bulan</th>
+			                          <th>Tanggal</th>
+			                          <th>Hasil</th>
+			                        </tr>
+			                      </thead>
+			                      <tbody>
+			                      {% for defuzz in defuzzifikasi %}
+			                        <tr>
+			                          <td>{{ defuzz.datas.bulan }}</td>
+			                          <td>{{ defuzz.datas.minggu }}</td>
+			                          <td>{{ defuzz.hasil }}</td>
+			                        </tr>
+			                      {% endfor %}
+			                      </tbody>
+			                     </table>
+			                 	</div>
+			                   </div>
+	                        </div>
+	                        <div role="tabpanel" class="tab-pane fade" id="filedatas" aria-labelledby="profile-tab3">
+	                          <div class="x_panel">
+	                        	<h3>Hasil Per-data</h3>
+	                        	<div class="ln_solid"></div>
+	                        	<div class="col-md-6 col-sm-6 col-xs-12">
+		                        <table class="table table-bordered">
+			                      <thead>
+			                        <tr>
+			                          <th>Bulan</th>
+			                          <th>Tanggal</th>
+			                          <th>Permintaan</th>
+			                          <th>Persediaan</th>
+			                          <th>Produksi</th>
+			                          <th>Detail</th>
+			                        </tr>
+			                      </thead>
+			                      <tbody>
+			                      {% for filedata in filedatas %}
+			                        <tr>
+			                          <td>{{ filedata.bulan }}</td>
+			                          <td>{{ filedata.minggu }}</td>
+			                          <td>{{ filedata.permintaan }}</td>
+			                          <td>{{ filedata.persediaan }}</td>
+			                          <td>{{ filedata.produksi }}</td>
+			                          <td><a class="open-modal btn btn-success btn-xs" data-url="{% url 'Fuzzy:filedetail' filedata.datas.id filedata.id %}">Detail Hasil</a></td>
+			                        </tr>
+			                      {% endfor %}
+			                      </tbody>
+			                    </table>
+			                 	</div>
+			                  </div>
+	                        </div>
+	                      </div>
+                    	</div>
+
+	                  </div>
+	                </div>
+	            </div>
+	        </div>
+	       </div>
+        </div>
+  </div>
+  <div class="modal-div"></div>
+
+    {% endblock %}

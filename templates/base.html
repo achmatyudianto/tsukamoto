@@ -1,0 +1,215 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Madur</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static "vendors/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static "vendors/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static "vendors/nprogress/nprogress.css" %}" rel="stylesheet">
+    <!-- jQuery custom content scroller -->
+    <link href="{% static "vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" %}" rel="stylesheet"/>
+    <!-- iCheck -->
+    <link href="{% static "vendors/iCheck/skins/flat/green.css" %}" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="{% static "vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static "build/css/custom.min.css" %}" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"> <i class="fa fa-ils"></i> <span>Kripik Madur</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="{% static "images/img.png" %}" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Selamat Datang,</span>
+                <h2>Admin</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a href="{% url 'Fuzzy:readdata' %}"><i class="fa fa-desktop"></i> Proses Data </a></li>
+                  <li><a href="{% url 'Fuzzy:batasan' %}"><i class="fa fa-line-chart"></i> Proses Peramalan </span></a></li>
+                  <li><a href="{% url 'History:filename' %}"><i class="fa fa-history"></i> History Peramalan </span></a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{% static "images/img.png" %}" alt="">Admin
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="{% url 'login' %}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        {% block content %}
+        {% endblock %}
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            ©2018 Madur, by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{% static "vendors/jquery/dist/jquery.min.js" %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static "vendors/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+    <!-- FastClick -->
+    <script src="{% static "vendors/fastclick/lib/fastclick.js" %}"></script>
+    <!-- NProgress -->
+    <script src="{% static "vendors/nprogress/nprogress.js" %}"></script>
+    <!-- jQuery custom content scroller -->
+    <script src="{% static "vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js" %}"></script>
+    <!-- iCheck -->
+    <script src="{% static "vendors/iCheck/icheck.min.js" %}"></script>
+    <!-- Datatables -->
+    <script src="{% static "vendors/datatables.net/js/jquery.dataTables.min.js" %}"></script>
+    <script src="{% static "vendors/datatables.net-bs/js/dataTables.bootstrap.min.js" %}"></script>
+    <script src="{% static "vendors/datatables.net-buttons/js/dataTables.buttons.min.js" %}"></script>
+    <script src="{% static "vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js" %}"></script>
+    <script src="{% static "vendors/datatables.net-buttons/js/buttons.flash.min.js" %}"></script>
+    <script src="{% static "vendors/datatables.net-buttons/js/buttons.html5.min.js" %}"></script>
+    <script src="{% static "vendors/datatables.net-buttons/js/buttons.print.min.js" %}"></script>
+    <script src="{% static "vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js" %}"></script>
+    <script src="{% static "vendors/datatables.net-keytable/js/dataTables.keyTable.min.js" %}"></script>
+    <script src="{% static "vendors/datatables.net-responsive/js/dataTables.responsive.min.js" %}"></script>
+    <script src="{% static "vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js" %}"></script>
+    <script src="{% static "vendors/datatables.net-scroller/js/dataTables.scroller.min.js" %}"></script>
+    <script src="{% static "vendors/jszip/dist/jszip.min.js" %}"></script>
+    <script src="{% static "vendors/pdfmake/build/pdfmake.min.js" %}"></script>
+    <script src="{% static "vendors/pdfmake/build/vfs_fonts.js" %}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{% static "build/js/custom.min.js" %}"></script>
+
+    <script type="text/javascript">
+      $(function () {
+
+        var loadForm = function () {
+          var btn = $(this);
+          $.ajax({
+            url: btn.attr("data-url"),
+            type: 'get',
+            dataType: 'json',
+            beforeSend: function () {
+              $("#modal-datas").modal("show");
+            },
+            success: function (data) {
+              $("#modal-datas .modal-content").html(data.html_form);
+            }
+          });
+        };
+
+        var saveForm = function () {
+          var form = $(this);
+          $.ajax({
+            url: form.attr("action"),
+            data: form.serialize(),
+            type: form.attr("method"),
+            dataType: 'json',
+            success: function (data) {
+              if (data.form_is_valid) {
+                $("#datas-table tbody").html(data.html_datas_list);
+                $("#modal-datas").modal("hide");
+              }
+              else {
+                $("#modal-datas .modal-content").html(data.html_form);
+              }
+            }
+          });
+          return false;
+        };
+
+        // Create book
+        $(".js-create-datas").click(loadForm);
+        $("#modal-datas").on("submit", ".js-datas-create-form", saveForm);
+
+        // Update book
+        $("#datas-table").on("click", ".js-update-datas", loadForm);
+        $("#modal-datas").on("submit", ".js-datas-update-form", saveForm);
+
+        // Delete book
+        $("#datas-table").on("click", ".js-delete-datas", loadForm);
+        $("#modal-datas").on("submit", ".js-datas-delete-form", saveForm);
+
+      });
+    </script>
+    
+    <script type="text/javascript">
+      var modalDiv = $(".modal-div");
+      console.log(modalDiv)
+
+      $(".open-modal").on("click", function() {
+        $.ajax({
+          url: $(this).attr("data-url"),
+          success: function(data) {
+            modalDiv.html(data);
+            $("#myEdit").modal();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

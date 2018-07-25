@@ -1,0 +1,17 @@
+						{% for data in datas %}
+	                        <tr>
+	                          <td>{{ data.bulan }}</td>
+	                          <td>{{ data.minggu }}</td>
+	                          <td>{{ data.permintaan }}</td>
+	                          <td>{{ data.persediaan }}</td>
+	                          <td>{{ data.produksi }}</td>
+	                          <td>
+	                          	<button type="button" class="btn btn-warning btn-xs js-update-datas" 
+	                          	data-url="{% url 'Fuzzy:update_datas' data.id %}">
+	                          	<span class="glyphicon glyphicon-pencil"></span> Edit </button> 
+	                          	<button type="button" class="btn btn-danger btn-xs js-delete-datas"
+	                          	data-url="{% url 'Fuzzy:delete_datas' data.id %}">
+	                          	<span class="glyphicon glyphicon-trash"></span> Delete </button>
+	                      	  </td>
+	                        </tr>
+	                      {% endfor %}
