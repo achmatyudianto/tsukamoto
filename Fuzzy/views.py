@@ -358,12 +358,25 @@ def ProsesFuzzifikasi(request):
 	filedatas = FileDatas.objects.filter(filename = filename)
 	batas = Batas.objects.filter(filename = getfilename)
 
+	# Perhitungan Mape
+	a = 0
+	n = 0
+	for b in defuzz:
+		c = abs(b.datas.produksi - int(b.hasil))
+		d = float(c) / float(b.datas.produksi)
+		a = a + d
+		n = n + 1
+	mape =(a * 100) / float(n)
+	akurasi = 100 - mape
+
 	return render(request, "proses.html", {
 		'fuzzifikasi' : fuzz,
 		'rulebase' : rule,
 		'defuzzifikasi': defuzz,
 		'filedatas' : filedatas,
-		'batas' : batas
+		'batas' : batas,
+		'mape' : mape,
+		'akurasi' : akurasi,
 		})
 
 def FileDetail(request, datas, filename):
