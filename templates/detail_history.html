@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 	{% block content %}
+		{% load mathfilters %}
 	    <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
@@ -54,6 +55,8 @@
 	                        </li>
 	                        <li role="presentation" class=""><a href="#filedatas" role="tab" id="profile-tab3" data-toggle="tab" aria-expanded="false">Hasil Per-Data</a>
 	                        </li>
+	                        <li role="presentation" class=""><a href="#mape" role="tab" id="profile-tab4" data-toggle="tab" aria-expanded="false">MAPE</a>
+	                        </li>
 	                      </ul>
 	                      <div id="myTabContent" class="tab-content">
 	                        <div role="tabpanel" class="tab-pane fade active in" id="fuzzifikasi" aria-labelledby="home-tab">
@@ -64,8 +67,8 @@
 			                        <tr>
 			                          <th>Bulan</th>
 			                          <th>Tanggal</th>
-			                          <th>Parameter</th>
-			                          <th>Derajat</th>
+			                          <th>Variabel</th>
+			                          <th>Himpunan Fuzzy</th>
 			                          <th>Hasil</th>
 			                        </tr>
 			                      </thead>
@@ -268,6 +271,40 @@
 			                      {% endfor %}
 			                      </tbody>
 			                    </table>
+			                 	</div>
+			                  </div>
+	                        </div>
+	                        <div role="tabpanel" class="tab-pane fade" id="mape" aria-labelledby="profile-tab4">
+	                          <div class="x_panel">
+	                        	<h3>Hasil MAPE</h3>
+	                        	<div class="ln_solid"></div>
+	                        	<div class="col-md-9 col-sm-9 col-xs-12">
+	                        		<p> Hasil Perhtungan MAPE : {{ mape }} %</p>
+	                        		<p> Tinggat Akurasi : 100% - {{ mape }}% = {{ akurasi }} %</p>
+		                        	<table class="table table-bordered">
+				                      <thead>
+				                        <tr>
+				                          <th>Bulan</th>
+				                          <th>Tanggal</th>
+				                          <th>Produksi(real) </th>
+				                          <th>Hasil(system)</th>
+				                          <th>real-system</th>
+				                          <th>(real-system)/system</th>
+				                        </tr>
+				                      </thead>
+				                      <tbody>
+				                      {% for defuzz in defuzzifikasi %}
+				                        <tr>
+				                          <td>{{ defuzz.datas.bulan }}</td>
+				                          <td>{{ defuzz.datas.minggu }}</td>
+				                          <td>{{ defuzz.datas.produksi }}</td>
+				                          <td>{{ defuzz.hasil }}</td>
+				                          <td>{{ defuzz.hasil|sub:defuzz.datas.produksi|abs }}</td>
+				                          <td>{{ defuzz.hasil|sub:defuzz.datas.produksi|abs|div:defuzz.datas.produksi }}</td>
+				                        </tr>
+				                      {% endfor %}
+				                      </tbody>
+				                     </table>
 			                 	</div>
 			                  </div>
 	                        </div>
